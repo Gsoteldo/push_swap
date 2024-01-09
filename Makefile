@@ -6,13 +6,15 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 16:59:28 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/01/08 21:25:07 by gsoteldo         ###   ########.fr        #
+#    Updated: 2024/01/09 19:35:10 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap.a
 
-SRC =	./src/push_swap.c
+SRC =	./src/push_swap.c \
+		./src/a_list.c \
+
 
 OBJ = $(SRC:.c=.o)
 

@@ -1,35 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   a_list.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/28 18:04:49 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/09 19:29:45 by gsoteldo         ###   ########.fr       */
+/*   Created: 2024/01/09 19:33:08 by gsoteldo          #+#    #+#             */
+/*   Updated: 2024/01/09 21:31:26 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../include/push_swap.h"
 
-/**
- * Crea un nuevo nodo para una lista enlazada.
- * Asigna memoria dinámicamente para un nuevo nodo de la lista.
- * Asigna el puntero al contenido del nodo al contenido del nuevo nodo.
- * Asigna nulo al campo `next` del nuevo nodo.
- * Retorna el nuevo nodo.
- *
- * @param content: Puntero al contenido del nuevo nodo.
- * @return: El nuevo nodo.
- */
-t_list	*ft_lstnew(void *content)
+t_stack_a	*ft_new_a_node(int content)
 {
-	t_list	*ptr;
+	t_stack_a	*ptr;
 
-	ptr = (t_list *)malloc(sizeof(t_list));
+	ptr = (t_stack_a *)malloc(sizeof(t_stack_a));
 	if (ptr == 0)
 		return (0);
 	ptr->content = content;
 	ptr->next = 0;
+	return (ptr);
+}
+
+t_stack_a	*ft_new_a_list(int argc, char **argv)
+{
+	int			i;
+	t_stack_a	*ptr;
+	t_stack_a	*tmp;
+
+	i = 1;
+	ptr = ft_new_a_node(ft_atoi(argv[i]));
+	tmp = ptr;
+	while (++i < argc)
+	{
+		tmp->next =  ft_new_a_node(ft_atoi(argv[i]));
+		tmp = tmp->next;
+		tmp->next = NULL;
+	}
+
+	
 	return (ptr);
 }

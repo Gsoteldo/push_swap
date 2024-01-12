@@ -14,6 +14,7 @@ NAME = push_swap.a
 
 SRC =	./src/push_swap.c \
 		./src/a_list.c \
+		./src/push.c \
 
 
 OBJ = $(SRC:.c=.o)

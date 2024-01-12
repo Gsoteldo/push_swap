@@ -12,24 +12,77 @@
 
 #include "../include/push_swap.h"
 
-int main(int argc, char *argv[])
+void	free_stacks(t_stack *stack_a, t_stack *stack_b, int flag)
 {
-	t_stack_a *lista;
-	int i;
-	//int numbers;
+	free(stack_a);
+	free(stack_b);
+	if (flag == 1)
+		ft_printf("Error\n");
+	exit(0);
+}
+
+void	checker(int argc, char **argv, t_stack *stack_a, t_stack *stack_b)
+{
+	int					i;
+	long unsigned int	j;
 
 	i = 1;
+	j = 0;
 	if (argc < 2)
+		free_stacks(stack_a, stack_b, 0);
+	while (i < argc)
 	{
-		ft_printf("Error\n");
-		return (0);
+		if (argv[i][ft_strlen(argv[i]) - 1] == ' ' || argv[i][0] == ' ')
+			free_stacks(stack_a, stack_b, 0);
+		while (j < ft_strlen(argv[i]))
+		{
+			if ((ft_isdigit(argv[i][j]) == 0) && (argv[i][j] != ' '))
+			{
+				if (argv[i][j] != '-')
+					free_stacks(stack_a, stack_b, 1);
+			}
+			if (argv[i][j] == ' ' && ft_isdigit(argv[i][j + 1]) == ' ')
+				free_stacks(stack_a, stack_b, 1);
+			j++;
+		}
+		i++;
 	}
-		lista = ft_new_a_list(argc, argv);
-		ft_printf("%d\n", lista->content);
-		ft_printf("%d\n", lista->next->content);
-		ft_printf("%d\n", lista->next->next->content);
-	
-	
+}
 
+int	stack_size(int argc, char **argv)
+{
+	int	i;
+	int	size;
+
+	size = 0;
+	if (argc == 2)
+	{
+		i = 0;
+		while (argv[1][i])
+		{
+			if (argv[1][i] == ' ')
+				size++;
+			i++;
+		}
+		size++;
+	}
+	else
+		size = argc - 1;
+	return (size);
+}
+
+int	main(int argc, char *argv[])
+{
+	t_stack	*stack_a;
+	t_stack	*stack_b;
+	int		size;
+
+	stack_a = NULL;
+	stack_b = NULL;
+	checker(argc, argv, stack_a, stack_b);
+	size = stack_size(argc, argv);
+	stack_a = ft_new_a_list(argc, argv);
+	show_stack(stack_a);
+	ft_printf("size = %d\n", size);
 	return (0);
 }

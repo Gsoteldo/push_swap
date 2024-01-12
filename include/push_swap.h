@@ -15,20 +15,15 @@
 
 # include "../libft/libft.h"
 
-typedef struct t_stack_a
+typedef struct t_stack
 {
-	int					content;
-	struct t_stack_a	*next;
-}t_stack_a;
+	int				content;
+	struct t_stack	*next;
+}t_stack;
 
-typedef struct t_stack_b
-{
-	int					content;
-	struct t_stack_b	*next;
-}t_stack_b;
-
-t_stack_a	*ft_new_a_node(int content);
-t_stack_a	*ft_new_a_list(int argc, char **argv);
-
+t_stack	*ft_new_a_node(int content);
+t_stack	*ft_new_a_list(int argc, char **argv);
+void	push(t_stack **source, t_stack **destiny);
+void	show_stack(t_stack *stack);
 
 #endif

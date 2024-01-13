@@ -84,5 +84,44 @@ int	main(int argc, char *argv[])
 	stack_a = ft_new_a_list(argc, argv);
 	show_stack(stack_a);
 	ft_printf("size = %d\n", size);
+	push_b(&stack_a, &stack_b);
+	push_b(&stack_a, &stack_b);
+	show_stacks(stack_a, stack_b);
+	rotate_ab(&stack_a, &stack_b);
+	show_stacks(stack_a, stack_b);
+	swap_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	push_a(&stack_a, &stack_b);
+	show_stacks(stack_a, stack_b);
+	reverse_rotate_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	push_a(&stack_a, &stack_b);
+	show_stacks(stack_a, stack_b);
+	rotate_a(&stack_a);
+	rotate_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+
+	/*
+	ft_printf("\n");
+	show_stacks(stack_a, stack_b);
+	ft_printf("------------------\n");
+	swap_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	ft_printf("\n");
+	show_stacks(stack_a, stack_b);
+	ft_printf("------------------\n");
+	push_a(&stack_a, &stack_b);
+	show_stacks(stack_a, stack_b);
+	ft_printf("-------------------\n");
+	rotate_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	ft_printf("-------------------\n");
+	reverse_rotate_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	reverse_rotate_a(&stack_a);
+	show_stacks(stack_a, stack_b);
+	*/
+
+	free_stacks(stack_a, stack_b, 0);
 	return (0);
 }

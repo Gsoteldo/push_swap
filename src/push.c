@@ -13,14 +13,14 @@ void	push(t_stack **source, t_stack **destiny)
 	*source = temp;
 }
 
-void	show_stack(t_stack *stack)
+void	push_a(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack	*temp;
+	push(stack_b, stack_a);
+	ft_printf("pa\n");
+}
 
-	temp = stack;
-	while (temp != NULL)
-	{
-		ft_printf("%d\n", temp->content);
-		temp = temp->next;
-	}
+void	push_b(t_stack **stack_a, t_stack **stack_b)
+{
+	push(stack_a, stack_b);
+	ft_printf("pb\n");
 }

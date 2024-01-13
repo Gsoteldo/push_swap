@@ -13,8 +13,11 @@
 NAME = push_swap.a
 
 SRC =	./src/push_swap.c \
-		./src/a_list.c \
+		./src/stack.c \
 		./src/push.c \
+		./src/swap.c \
+		./src/rotate.c \
+		./src/reverse_rotate.c \
 
 
 OBJ = $(SRC:.c=.o)

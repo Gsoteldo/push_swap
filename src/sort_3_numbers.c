@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_3_numbers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 21:51:29 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/13 21:51:32 by gsoteldo         ###   ########.fr       */
+/*   Created: 2024/01/13 21:51:23 by gsoteldo          #+#    #+#             */
+/*   Updated: 2024/01/13 22:37:01 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_stack **source, t_stack **destiny)
+void sort_3_numbers(t_stack *stack_a)
 {
-	t_stack	*temp;
 
-	if (source == NULL)
-		return ;
-	temp = (*source)->next;
-	(*source)->next = *destiny;
-	*destiny = *source;
-	*source = temp;
-}
+	int	first_elem;
+	int	second_elem;
+	int	third_elem;
 
-void	push_a(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
-}
+	first_elem = stack_a->content;
+	second_elem = stack_a->next->content;
+	third_elem = stack_a->next->next->content;
 
-void	push_b(t_stack **stack_a, t_stack **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
+	show_stack(stack_a);
+
+	//ft_printf("%d\n\n", third_elem);
+	if ((first_elem > second_elem) && (second_elem < third_elem) && (first_elem < third_elem))
+	{
+		swap_a(&stack_a);
+		show_stack(stack_a);
+	}
 }

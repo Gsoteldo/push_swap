@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:33:54 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/09 20:04:38 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:38:39 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,14 @@ int	main(int argc, char *argv[])
 	stack_a = ft_new_a_list(argc, argv);
 	show_stack(stack_a);
 	ft_printf("size = %d\n", size);
+	ft_printf("Numeros ordenados: \n");
+
+	sort_3_numbers(stack_a);
+
+	show_stacks(stack_a, stack_b);
+	
+	//show_stack(stack_a);
+	/*
 	push_b(&stack_a, &stack_b);
 	push_b(&stack_a, &stack_b);
 	show_stacks(stack_a, stack_b);
@@ -99,7 +107,7 @@ int	main(int argc, char *argv[])
 	show_stacks(stack_a, stack_b);
 	rotate_a(&stack_a);
 	rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);
+	show_stacks(stack_a, stack_b);*/
 
 	/*
 	ft_printf("\n");

@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 16:59:28 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/01/09 19:35:10 by gsoteldo         ###   ########.fr        #
+#    Updated: 2024/01/13 22:00:28 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,7 @@ SRC =	./src/push_swap.c \
 		./src/swap.c \
 		./src/rotate.c \
 		./src/reverse_rotate.c \
+		./src/sort_3_numbers.c \
 
 
 OBJ = $(SRC:.c=.o)

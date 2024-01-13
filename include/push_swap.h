@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:40:43 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/09 19:58:15 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/01/13 22:24:04 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,5 @@ void	reverse_rotate_a(t_stack **stack_a);
 void	reverse_rotate_b(t_stack **stack_b);
 void	reverse_rotate_ab(t_stack **stack_a, t_stack **stack_b);
 
+void sort_3_numbers(t_stack *stack_a);
 #endif

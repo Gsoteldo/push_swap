@@ -10,13 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../include/push_swap.h"
 
-void reverse_rotate(t_stack **stack)
+void	reverse_rotate(t_stack **stack)
 {
-	t_stack *temp;
-	t_stack *temp2;
+	t_stack	*temp;
+	t_stack	*temp2;
 
 	if (stack == NULL)
 		return ;

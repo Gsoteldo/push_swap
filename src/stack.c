@@ -89,7 +89,7 @@ void	show_stack(t_stack *stack)
 	}
 }
 
-void show_stacks(t_stack *stack_a, t_stack *stack_b)
+void	show_stacks(t_stack *stack_a, t_stack *stack_b)
 {
 	ft_printf("stack_a:\n");
 	show_stack(stack_a);

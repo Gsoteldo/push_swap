@@ -12,23 +12,40 @@
 
 #include "../include/push_swap.h"
 
-void sort_3_numbers(t_stack *stack_a)
+static void	swap_and_rotate(t_stack **stack_a)
 {
+	swap_a(stack_a);
+	rotate_a(stack_a);
+}
 
+static void	swap_and_reverse_rotate(t_stack **stack_a)
+{
+	swap_a(stack_a);
+	reverse_rotate_a(stack_a);
+}
+
+void	sort_3_numbers(t_stack **stack_a)
+{
 	int	first_elem;
 	int	second_elem;
 	int	third_elem;
 
-	first_elem = stack_a->content;
-	second_elem = stack_a->next->content;
-	third_elem = stack_a->next->next->content;
-
-	show_stack(stack_a);
-
-	//ft_printf("%d\n\n", third_elem);
-	if ((first_elem > second_elem) && (second_elem < third_elem) && (first_elem < third_elem))
-	{
-		swap_a(&stack_a);
-		show_stack(stack_a);
-	}
+	first_elem = (*stack_a)->content;
+	second_elem = (*stack_a)->next->content;
+	third_elem = (*stack_a)->next->next->content;
+	if ((first_elem > second_elem) && (second_elem < third_elem)
+		&& (first_elem < third_elem))
+		swap_a(stack_a);
+	else if ((first_elem > second_elem) && (second_elem > third_elem)
+		&& (first_elem > third_elem))
+		swap_and_reverse_rotate(stack_a);
+	else if ((first_elem > second_elem) && (second_elem < third_elem)
+		&& (first_elem > third_elem))
+		rotate_a(stack_a);
+	else if ((first_elem < second_elem) && (second_elem > third_elem)
+		&& (first_elem < third_elem))
+		swap_and_rotate(stack_a);
+	else if ((first_elem < second_elem) && (second_elem > third_elem)
+		&& (first_elem > third_elem))
+		reverse_rotate_a(stack_a);
 }

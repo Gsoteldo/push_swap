@@ -19,6 +19,7 @@ SRC =	./src/push_swap.c \
 		./src/rotate.c \
 		./src/reverse_rotate.c \
 		./src/sort_3_numbers.c \
+		./src/sort_5_numbers.c \
 
 
 OBJ = $(SRC:.c=.o)

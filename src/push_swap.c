@@ -85,9 +85,12 @@ int	main(int argc, char *argv[])
 	show_stack(stack_a);
 	ft_printf("size = %d\n", size);
 	ft_printf("Numeros ordenados: \n");
-
-	sort_3_numbers(stack_a);
-
+	if (size == 2 && stack_a->content > stack_a->next->content)
+		rotate_a(&stack_a);
+	else if (size == 3)
+		sort_3_numbers(&stack_a);
+	else if (size == 5)
+		sort_5_numbers(&stack_a, &stack_b);
 	show_stacks(stack_a, stack_b);
 	
 	//show_stack(stack_a);

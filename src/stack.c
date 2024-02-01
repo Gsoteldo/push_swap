@@ -6,17 +6,17 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:33:08 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/13 22:36:49 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/01/29 20:42:34 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-t_stack	*ft_new_a_node(int content)
+t_linked_list	*ft_new_a_node(int content)
 {
-	t_stack	*ptr;
+	t_linked_list	*ptr;
 
-	ptr = (t_stack *)malloc(sizeof(t_stack));
+	ptr = (t_linked_list *)malloc(sizeof(t_linked_list));
 	if (ptr == 0)
 		return (0);
 	ptr->content = content;
@@ -24,16 +24,17 @@ t_stack	*ft_new_a_node(int content)
 	return (ptr);
 }
 
-t_stack	*ft_str_to_a_list(char **str)
+t_linked_list	*ft_str_to_a_list(char **str)
 {
 	int		i;
 	int		counter;
-	t_stack	*ptr;
-	t_stack	*tmp;
+	t_linked_list	*ptr;
+	t_linked_list	*tmp;
 
 	i = 0;
 	counter = 0;
 	str = ft_split(str[1], ' ');
+	is_repeated(2, str);
 	while (str[i] != NULL)
 	{
 		i++;
@@ -51,12 +52,12 @@ t_stack	*ft_str_to_a_list(char **str)
 	return (ptr);
 }
 
-t_stack	*ft_new_a_list(int argc, char **argv)
+t_linked_list	*ft_new_a_list(int argc, char **argv)
 {
 	int		i;
 	int		j;
-	t_stack	*ptr;
-	t_stack	*tmp;
+	t_linked_list	*ptr;
+	t_linked_list	*tmp;
 
 	i = 1;
 	j = 0;
@@ -77,9 +78,9 @@ t_stack	*ft_new_a_list(int argc, char **argv)
 	return (ptr);
 }
 
-void	show_stack(t_stack *stack)
+void	show_stack(t_linked_list *stack)
 {
-	t_stack	*temp;
+	t_linked_list	*temp;
 
 	temp = stack;
 	while (temp != NULL)
@@ -89,10 +90,29 @@ void	show_stack(t_stack *stack)
 	}
 }
 
-void	show_stacks(t_stack *stack_a, t_stack *stack_b)
+
+int	stack_size(t_linked_list *lst)
 {
-	ft_printf("stack_a:\n");
-	show_stack(stack_a);
-	ft_printf("stack_b:\n");
-	show_stack(stack_b);
+	int		i;
+
+	i = 0;
+	if (lst == 0)
+		return (0);
+	while (lst != 0)
+	{
+		lst = lst->next;
+		i++;
+	}
+	return (i);
 }
+
+
+
+
+
+
+
+
+
+
+

@@ -6,25 +6,25 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:51:23 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/13 22:37:01 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/01/27 20:26:36 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void	swap_and_rotate(t_stack **stack_a)
+static void	swap_and_rotate(t_linked_list **stack_a)
 {
 	swap_a(stack_a);
 	rotate_a(stack_a);
 }
 
-static void	swap_and_reverse_rotate(t_stack **stack_a)
+static void	swap_and_reverse_rotate(t_linked_list **stack_a)
 {
 	swap_a(stack_a);
 	reverse_rotate_a(stack_a);
 }
 
-void	sort_3_numbers(t_stack **stack_a)
+void	sort_3_numbers(t_linked_list **stack_a)
 {
 	int	first_elem;
 	int	second_elem;

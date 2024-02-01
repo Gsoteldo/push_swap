@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push.c                                             :+:      :+:    :+:   */
+/*   sort_4_numbers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/13 21:51:29 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/27 20:23:57 by gsoteldo         ###   ########.fr       */
+/*   Created: 2024/01/29 17:43:34 by gsoteldo          #+#    #+#             */
+/*   Updated: 2024/02/01 19:04:18 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void	push(t_linked_list **source, t_linked_list **destiny)
+void sort_4_numbers(t_stack *stacks)
 {
-	t_linked_list	*temp;
-
-	if (source == NULL)
-		return ;
-	temp = (*source)->next;
-	(*source)->next = *destiny;
-	*destiny = *source;
-	*source = temp;
-}
-
-void	push_a(t_linked_list **stack_a, t_linked_list **stack_b)
-{
-	push(stack_b, stack_a);
-	ft_printf("pa\n");
-}
-
-void	push_b(t_linked_list **stack_a, t_linked_list **stack_b)
-{
-	push(stack_a, stack_b);
-	ft_printf("pb\n");
+	stacks->moves = (t_moves *)malloc(sizeof(t_moves));
+	stacks->cheapest = (t_moves *)malloc(sizeof(t_moves));
+	stacks->value = (t_value *)malloc(sizeof(t_value));
+	push_b(&stacks->list_a, &stacks->list_b);
+	sort_3_numbers(&stacks->list_a);
+	moves_stack_a(stacks);
+	free_stacks(stacks, 0);
+	exit(0);
 }

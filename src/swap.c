@@ -6,15 +6,16 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:59:26 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/13 21:59:40 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:57:41 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../include/push_swap.h"
 
-void	swap(t_stack **stack)
+void	swap(t_linked_list **stack)
 {
-	t_stack	*temp;
+	t_linked_list	*temp;
 
 	if (stack == NULL)
 		return ;
@@ -24,19 +25,19 @@ void	swap(t_stack **stack)
 	*stack = temp;
 }
 
-void	swap_a(t_stack **stack_a)
+void	swap_a(t_linked_list **stack_a)
 {
 	swap(stack_a);
 	ft_printf("sa\n");
 }
 
-void	swap_b(t_stack **stack_b)
+void	swap_b(t_linked_list **stack_b)
 {
 	swap(stack_b);
 	ft_printf("sb\n");
 }
 
-void	swap_ab(t_stack **stack_a, t_stack **stack_b)
+void	swap_ab(t_linked_list **stack_a, t_linked_list **stack_b)
 {
 	swap(stack_a);
 	swap(stack_b);

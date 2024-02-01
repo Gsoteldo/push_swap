@@ -6,7 +6,7 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 16:59:28 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/01/13 22:00:28 by gsoteldo         ###   ########.fr        #
+#    Updated: 2024/02/01 17:59:54 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,8 +19,11 @@ SRC =	./src/push_swap.c \
 		./src/rotate.c \
 		./src/reverse_rotate.c \
 		./src/sort_3_numbers.c \
-		./src/sort_5_numbers.c \
-
+		./src/check_input.c \
+		./src/utils.c \
+		./src/max_min_values.c \
+		./src/moves.c \
+		./src/sort_4_numbers.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -32,11 +35,15 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make -C libft
-	@cp libft/libft.a .
-	@rm -f libft/libft.a
-	@mv libft.a $(NAME)
+	@mv libft/libft.a $(NAME)
 	ar rc $(NAME) $(OBJ)
 	$(CC) $(CFLAGS) $(NAME) -o push_swap
+
+debug: $(OBJ)
+	@make -C libft
+	@mv libft/libft.a $(NAME)
+	ar rc $(NAME) $(OBJ)
+	$(CC) $(CFLAGS) $(NAME) -o push_swap -g3 
 
 play: $(NAME)
 #	$(CC) $(CFLAGS) $(NAME) -o push_swap

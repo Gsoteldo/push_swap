@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:40:43 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/01 18:47:37 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/02 13:06:45 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ void			show_stack(t_linked_list *stack);
 int				stack_size(t_linked_list *lst);
 void			free_stacks(t_stack *stacks, int flag);
 int				is_repeated(int argc, char **argv);
-void 			is_max_min(t_stack *stacks);
+void 			is_max_min(t_stack *stacks, int flag);
+t_linked_list	*ft_last(t_linked_list *stack);
 
 //Push moves
 void	push(t_linked_list **source, t_linked_list **destiny);
@@ -98,5 +99,9 @@ void sort_4_numbers(t_stack *stacks);
 
 int find_index(t_linked_list *stack, int value);
 void moves_stack_a(t_stack *stacks);
-int search_number(t_stack *stack, int value);
+int search_number(t_linked_list *stack, int value);
+void to_top_stack_a(t_stack *stacks, t_linked_list *stack_a, int i);
+void new_elem_in_b(t_stack *stacks);
+void max_min_in_b(t_stack *stacks);
+void cheapest(t_stack *stacks);
 #endif

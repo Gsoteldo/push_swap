@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:32:46 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/01 18:45:10 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/02 12:02:21 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,47 +42,53 @@ void is_ordered(t_linked_list *stack_a)
 
 int find_index(t_linked_list *stack, int value)
 {
+	t_linked_list *temp;
 	int i;
 
 	i = 0;
+	temp = stack;
 	while (i < stack_size(stack))
 	{
-		if (stack->content == value)
+		if (temp->content == value)
 		{
-			ft_printf("find_index = %d\n", i);
+			//ft_printf("find_index = %d\n", i);
 			return (i);
 		}
-		stack = stack->next;
+		temp = temp->next;
 		i++;
 	}
 	return (-1);
 }
 
-int search_number(t_stack *stack, int value)
+int search_number(t_linked_list *stack, int value)
 {
 	t_linked_list *temp;
 	int flag;
 	int i;
-	int last_element;
 
 	i = 0;
 	flag = 0;
-	temp = stack->list_a;
-	while (temp->next != NULL)
+	temp =stack;
+	while (flag == 0)
 	{
-		temp = temp->next;
-		last_element = temp->content;
-	}
-	while (flag == 0 && value <= last_element)
-	{
-		temp = stack->list_a;
+		i = 0;
+		temp = stack;
 		value++;
-		while (i++ < stack_size(stack->list_a))
+		while (i++ < stack_size(stack))
 		{
 			if (temp->content == value)
-				return (1);
+				flag = 1;
 			temp = temp->next;
 		}
 	}
-	return (0);
+	return (value);
+}
+
+t_linked_list	*ft_last(t_linked_list *stack)
+{
+	if (stack == 0)
+		return (0);
+	while (stack->next != 0)
+		stack = stack->next;
+	return (stack);
 }

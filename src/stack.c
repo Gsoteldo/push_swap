@@ -100,8 +100,8 @@ int	stack_size(t_linked_list *lst)
 		return (0);
 	while (lst != 0)
 	{
-		lst = lst->next;
 		i++;
+		lst = lst->next;
 	}
 	return (i);
 }

@@ -29,7 +29,7 @@ static void is_max_a(t_stack *stacks, t_linked_list *stack_a)
 		stack_a = stack_a->next;
 		i++;
 	}
-	ft_printf("stacks->value->max_a = %d\n", stacks->value->max_a);
+	//ft_printf("stacks->value->max_a = %d\n", stacks->value->max_a);
 }
 
 static void is_min_a(t_stack *stacks, t_linked_list *stack_a)
@@ -47,7 +47,7 @@ static void is_min_a(t_stack *stacks, t_linked_list *stack_a)
 		stack_a = stack_a->next;
 		i++;
 	}
-	ft_printf("stacks->value->min_appp = %d\n", stacks->value->min_a);
+	//ft_printf("stacks->value->min_appp = %d\n", stacks->value->min_a);
 }
 
 static void is_max_b(t_stack *stacks, t_linked_list *stack_b)
@@ -65,7 +65,7 @@ static void is_max_b(t_stack *stacks, t_linked_list *stack_b)
 		stack_b = stack_b->next;
 		i++;
 	}
-	ft_printf("stacks->value->max_b = %d\n", stacks->value->max_b);
+	//ft_printf("stacks->value->max_b = %d\n", stacks->value->max_b);
 }
 
 static void is_min_b(t_stack *stacks, t_linked_list *stack_b)
@@ -83,13 +83,17 @@ static void is_min_b(t_stack *stacks, t_linked_list *stack_b)
 		stack_b = stack_b->next;
 		i++;
 	}
-	ft_printf("stacks->value->min_b = %d\n", stacks->value->min_b);
+	//ft_printf("stacks->value->min_b = %d\n", stacks->value->min_b);
 }
 
-void is_max_min(t_stack *stacks)
+void is_max_min(t_stack *stacks, int flag)
 {
 	is_max_a(stacks, stacks->list_a);
 	is_min_a(stacks, stacks->list_a);
+	if (flag == 1)
+	{
 	is_max_b(stacks, stacks->list_b);
 	is_min_b(stacks, stacks->list_b);
+	}
+	
 }

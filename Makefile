@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
+#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 16:59:28 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/02/01 17:59:54 by gsoteldo         ###   ########.fr        #
+#    Updated: 2024/02/02 12:19:22 by gabo             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRC =	./src/push_swap.c \
 		./src/check_input.c \
 		./src/utils.c \
 		./src/max_min_values.c \
-		./src/moves.c \
+		./src/moves_a.c \
+		./src/moves_b.c \
+		./src/cheap.c \
 		./src/sort_4_numbers.c \
 
 OBJ = $(SRC:.c=.o)

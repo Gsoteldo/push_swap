@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:51:23 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/27 20:26:36 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/02 17:42:54 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	swap_and_rotate(t_linked_list **stack_a)
 static void	swap_and_reverse_rotate(t_linked_list **stack_a)
 {
 	swap_a(stack_a);
-	reverse_rotate_a(stack_a);
+	r_rotate_a(stack_a);
 }
 
 void	sort_3_numbers(t_linked_list **stack_a)
@@ -47,5 +47,5 @@ void	sort_3_numbers(t_linked_list **stack_a)
 		swap_and_rotate(stack_a);
 	else if ((first_elem < second_elem) && (second_elem > third_elem)
 		&& (first_elem > third_elem))
-		reverse_rotate_a(stack_a);
+		r_rotate_a(stack_a);
 }

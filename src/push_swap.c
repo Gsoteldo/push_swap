@@ -3,33 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:33:54 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 13:27:01 by gabo             ###   ########.fr       */
+/*   Updated: 2024/02/04 20:00:45 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void push_swap(t_stack *stacks, int size_stack)
+void ft_leaks(void)
+{
+	system("leaks push_swap");
+}
+
+void	push_swap(t_stack *stacks, int size_stack)
 {
 	is_ordered(stacks->list_a);
 	if (size_stack == 1)
 		return ;
 	else if (size_stack == 2)
-			swap_a(&stacks->list_a);
+		swap_a(&stacks->list_a);
 	else if (size_stack == 3)
 		sort_3_numbers(&stacks->list_a);
 	else if (size_stack == 4)
 		sort_4_numbers(stacks);
 	else
 	{
-	push_b(&stacks->list_a, &stacks->list_b);
-	push_b(&stacks->list_a, &stacks->list_b);
-	cheapest(stacks);
-	sort_3_numbers(&stacks->list_a);
-	moves_stack_a(stacks);
+		push_b(&stacks->list_a, &stacks->list_b);
+		push_b(&stacks->list_a, &stacks->list_b);
+		cheapest(stacks);
+		sort_3_numbers(&stacks->list_a);
+		moves_stack_a(stacks);
 	}
 }
 
@@ -38,8 +43,9 @@ int	main(int argc, char *argv[])
 	t_stack	*stacks;
 	int		size;
 
+	//atexit(ft_leaks);
 	stacks = (t_stack *)malloc(sizeof(t_stack));
-	if(checker(argc, argv, stacks) == 0)
+	if (checker(argc, argv, stacks) == 0)
 	{
 		ft_printf("Error\n");
 		return (0);
@@ -48,64 +54,6 @@ int	main(int argc, char *argv[])
 	stacks->list_b = NULL;
 	size = stack_size(stacks->list_a);
 	push_swap(stacks, size);
-	free_stacks(stacks, 0);
-
-	//show_stack(stacks->list_a);
-	//printf("push_swap passed\n");
-	//push_b(&stacks->list_a, &stacks->list_b);
-	//ft_printf("size = %d\n", size);
-	//ft_printf("Numeros ordenados: \n");
-
-	//ft_printf("Stack a:\n");
-	//show_stack(stacks->list_a);
-	//ft_printf("Stack b:\n");
-	//show_stack(stacks->list_b);
-	//ft_printf("\n\n");
-	//rotate_a(&stacks->list_a);
-	//show_stack(stacks->list_a);
-	//find_index(stacks->list_a, 2);
-	//is_max_min(stacks);
-	//free_stacks(stacks, 0);
-
-	/*
-	push_b(&stack_a, &stack_b);
-	push_b(&stack_a, &stack_b);
-	show_stacks(stack_a, stack_b);
-	rotate_ab(&stack_a, &stack_b);
-	show_stacks(stack_a, stack_b);
-	swap_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	push_a(&stack_a, &stack_b);
-	show_stacks(stack_a, stack_b);
-	reverse_rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	push_a(&stack_a, &stack_b);
-	show_stacks(stack_a, stack_b);
-	rotate_a(&stack_a);
-	rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);*/
-
-	/*
-	ft_printf("\n");
-	show_stacks(stack_a, stack_b);
-	ft_printf("------------------\n");
-	swap_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	ft_printf("\n");
-	show_stacks(stack_a, stack_b);
-	ft_printf("------------------\n");
-	push_a(&stack_a, &stack_b);
-	show_stacks(stack_a, stack_b);
-	ft_printf("-------------------\n");
-	rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	ft_printf("-------------------\n");
-	reverse_rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	reverse_rotate_a(&stack_a);
-	show_stacks(stack_a, stack_b);
-	*/
-
-	//free_stacks(stack_a, stack_b, 0);
+	free_stacks(stacks, 0, 0);
 	return (0);
 }

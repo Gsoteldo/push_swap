@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_4_numbers.c                                   :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/29 17:43:34 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 17:01:44 by gsoteldo         ###   ########.fr       */
+/*   Created: 2024/02/04 20:03:23 by gsoteldo          #+#    #+#             */
+/*   Updated: 2024/02/04 20:04:46 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
-
-void	sort_4_numbers(t_stack *stacks)
+long	ft_atol(const char *str)
 {
-	stacks->moves = (t_moves *)malloc(sizeof(t_moves));
-	stacks->cheapest = (t_moves *)malloc(sizeof(t_moves));
-	stacks->value = (t_value *)malloc(sizeof(t_value));
-	push_b(&stacks->list_a, &stacks->list_b);
-	sort_3_numbers(&stacks->list_a);
-	moves_stack_a(stacks);
-	free_stacks(stacks, 0);
-	exit(0);
+	long	result;
+	int			sign;
+
+	result = 0;
+	sign = 1;
+	while ((*str >= 9 && *str <= 13) || *str == 32)
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
 }

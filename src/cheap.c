@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cheap.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/02 17:28:01 by gsoteldo          #+#    #+#             */
+/*   Updated: 2024/02/03 16:30:43 by gsoteldo         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-
-void move_cheapest(t_stack *stack)
+void	move_cheapest(t_stack *stack)
 {
 	while (stack->cheapest->ra-- != 0)
 		rotate_a(&stack->list_a);
@@ -10,41 +21,39 @@ void move_cheapest(t_stack *stack)
 	while (stack->cheapest->rr-- != 0)
 		rotate_ab(&stack->list_a, &stack->list_b);
 	while (stack->cheapest->rra-- != 0)
-		reverse_rotate_a(&stack->list_a);
+		r_rotate_a(&stack->list_a);
 	while (stack->cheapest->rrb-- != 0)
-		reverse_rotate_b(&stack->list_b);
+		r_rotate_b(&stack->list_b);
 	while (stack->cheapest->rrr-- != 0)
-		reverse_rotate_ab(&stack->list_a, &stack->list_b);
+		r_rotate_ab(&stack->list_a, &stack->list_b);
 	while (stack->cheapest->pb-- != 0)
 		push_b(&stack->list_a, &stack->list_b);
 }
 
-
-void double_moves_checker (t_stack *stacks)
+void	double_moves_checker(t_stack *stacks)
 {
 	stacks->moves->rr = 0;
 	stacks->moves->rrr = 0;
-
-	while (stacks->moves->ra != 0 && stacks->moves->rb != 0)
+	while (stacks->moves->ra > 0 && stacks->moves->rb > 0)
 	{
 		stacks->moves->ra--;
 		stacks->moves->rb--;
 		stacks->moves->rr++;
 	}
-	while (stacks->moves->rra != 0 && stacks->moves->rrb != 0)
+	while (stacks->moves->rra > 0 && stacks->moves->rrb > 0)
 	{
 		stacks->moves->rra--;
 		stacks->moves->rrb--;
 		stacks->moves->rrr++;
 	}
-
 }
 
-void cost(t_stack *stacks, int i)
+void	cost(t_stack *stacks, int i)
 {
-	stacks->moves->moves = stacks->moves->ra + stacks->moves->rb + stacks->moves->rr
-		+ stacks->moves->rra + stacks->moves->rrb + stacks->moves->rrr + stacks->moves->pa
-		+ stacks->moves->pb + stacks->moves->sa + stacks->moves->sb + stacks->moves->ss;
+	stacks->moves->moves = stacks->moves->ra + stacks->moves->rb
+		+ stacks->moves->rr + stacks->moves->rra + stacks->moves->rrb
+		+ stacks->moves->rrr + stacks->moves->pa + stacks->moves->pb
+		+ stacks->moves->sa + stacks->moves->sb + stacks->moves->ss;
 	if (i == 1 || stacks->moves->moves < stacks->cheapest->moves)
 	{
 		stacks->cheapest->moves = stacks->moves->moves;
@@ -62,27 +71,28 @@ void cost(t_stack *stacks, int i)
 	}
 }
 
-void move_checker (t_stack *stacks)
+void	move_checker(t_stack *stacks)
 {
-	t_linked_list *aux;
-	int i;
+	t_linked_list	*aux;
+	int				i;
 
 	aux = stacks->list_a;
 	i = 0;
 	while (i++ < stack_size(stacks->list_a))
 	{
 		to_top_stack_a(stacks, aux, i - 1);
-		if (aux->content > stacks->value->max_b || aux->content < stacks->value->min_b)
+		if (aux->content > stacks->value->max_b
+			|| aux->content < stacks->value->min_b)
 			max_min_in_b(stacks);
 		else
-			max_min_in_b(stacks);
+			new_elem_in_b(stacks, aux);
 		double_moves_checker(stacks);
 		cost(stacks, i);
 		aux = aux->next;
 	}
 }
 
-void cheapest(t_stack *stacks)
+void	cheapest(t_stack *stacks)
 {
 	stacks->moves = (t_moves *)malloc(sizeof(t_moves));
 	stacks->cheapest = (t_moves *)malloc(sizeof(t_moves));

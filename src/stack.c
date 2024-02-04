@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 19:33:08 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/29 20:42:34 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/04 19:40:58 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,15 @@ t_linked_list	*ft_new_a_node(int content)
 
 t_linked_list	*ft_str_to_a_list(char **str)
 {
-	int		i;
-	int		counter;
+	int				i;
+	int				counter;
 	t_linked_list	*ptr;
 	t_linked_list	*tmp;
 
 	i = 0;
 	counter = 0;
 	str = ft_split(str[1], ' ');
+	comprobation(2, str, NULL);
 	is_repeated(2, str);
 	while (str[i] != NULL)
 	{
@@ -54,17 +55,17 @@ t_linked_list	*ft_str_to_a_list(char **str)
 
 t_linked_list	*ft_new_a_list(int argc, char **argv)
 {
-	int		i;
-	int		j;
+	int				i;
+	int				j;
 	t_linked_list	*ptr;
 	t_linked_list	*tmp;
 
 	i = 1;
 	j = 0;
-	if (argc == 2)
-		ptr = ft_str_to_a_list(argv);
-	else
-	{
+//	if (argc == 2)
+//		ptr = ft_str_to_a_list(argv);
+//	else
+//	{
 		j = argc;
 		ptr = ft_new_a_node(ft_atoi(argv[i]));
 		tmp = ptr;
@@ -74,7 +75,7 @@ t_linked_list	*ft_new_a_list(int argc, char **argv)
 			tmp = tmp->next;
 			tmp->next = NULL;
 		}
-	}
+//	}
 	return (ptr);
 }
 
@@ -90,7 +91,6 @@ void	show_stack(t_linked_list *stack)
 	}
 }
 
-
 int	stack_size(t_linked_list *lst)
 {
 	int		i;
@@ -105,14 +105,3 @@ int	stack_size(t_linked_list *lst)
 	}
 	return (i);
 }
-
-
-
-
-
-
-
-
-
-
-

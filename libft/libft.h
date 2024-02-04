@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 12:29:50 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/01/09 19:29:39 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/04 20:04:56 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,11 @@ typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
-}t_list;
+}	t_list;
 
 int		ft_atoi(const char *str);
 char	*ft_itoa(int n);
+long	ft_atol(const char *str);
 
 void	ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *s, int fd);

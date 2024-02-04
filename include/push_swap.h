@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:40:43 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 13:06:45 by gabo             ###   ########.fr       */
+/*   Updated: 2024/02/04 20:00:34 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@
 
 typedef struct t_linked_list
 {
-	int				content;
+	int						content;
 	struct t_linked_list	*next;
-}t_linked_list;
+}	t_linked_list;
 
 typedef struct t_stack
 {
@@ -28,8 +28,7 @@ typedef struct t_stack
 	struct t_moves			*moves;
 	struct t_moves			*cheapest;
 	struct t_value			*value;
-
-}t_stack;
+}	t_stack;
 
 typedef struct t_value
 {
@@ -37,71 +36,73 @@ typedef struct t_value
 	int				max_b;
 	int				min_a;
 	int				min_b;
-}t_value;
+}	t_value;
 
 typedef struct t_moves
 {
-	int 	moves;
-	int 	pa;
-	int		pb;
-	int		sa;
-	int		sb;
-	int		ss;
-	int		ra;
-	int		rb;
-	int		rra;
-	int		rrb;
-	int		rr;
-	int		rrr;	
-}t_moves;
-
+	int	moves;
+	int	pa;
+	int	pb;
+	int	sa;
+	int	sb;
+	int	ss;
+	int	ra;
+	int	rb;
+	int	rra;
+	int	rrb;
+	int	rr;
+	int	rrr;	
+}	t_moves;
 
 //checker
-int	checker(int argc, char **argv, t_stack *stacks);
-void 	is_ordered(t_linked_list *stack_a);
+int				checker(int argc, char **argv, t_stack *stacks);
+void			is_ordered(t_linked_list *stack_a);
+void	comprobation(int argc, char **argv, t_stack *stacks);
 
 //Stack_a
 t_linked_list	*ft_new_a_node(int content);
 t_linked_list	*ft_new_a_list(int argc, char **argv);
 void			show_stack(t_linked_list *stack);
 int				stack_size(t_linked_list *lst);
-void			free_stacks(t_stack *stacks, int flag);
+void			free_stacks(t_stack *stacks, int flag, int exit_flag);
 int				is_repeated(int argc, char **argv);
-void 			is_max_min(t_stack *stacks, int flag);
+void			is_max_min(t_stack *stacks, int flag);
 t_linked_list	*ft_last(t_linked_list *stack);
+void			clear_stacks(t_linked_list *lst, void (*del)(void *));
+void			delete_node(t_linked_list *lst, void (*del)(void *));
 
 //Push moves
-void	push(t_linked_list **source, t_linked_list **destiny);
-void	push_a(t_linked_list **stack_a, t_linked_list **stack_b);
-void	push_b(t_linked_list **stack_a, t_linked_list **stack_b);
+void			push(t_linked_list **source, t_linked_list **destiny);
+void			push_a(t_linked_list **stack_a, t_linked_list **stack_b);
+void			push_b(t_linked_list **stack_a, t_linked_list **stack_b);
 
 //Swap moves
-void	swap(t_linked_list **stack);
-void	swap_a(t_linked_list **stack_a);
-void	swap_b(t_linked_list **stack_b);
-void	swap_ab(t_linked_list **stack_a, t_linked_list **stack_b);
+void			swap(t_linked_list **stack);
+void			swap_a(t_linked_list **stack_a);
+void			swap_b(t_linked_list **stack_b);
+void			swap_ab(t_linked_list **stack_a, t_linked_list **stack_b);
 
 //Rotate moves
-void	rotate(t_linked_list **stack);
-void	rotate_a(t_linked_list **stack_a);
-void	rotate_b(t_linked_list **stack_b);
-void	rotate_ab(t_linked_list **stack_a, t_linked_list **stack_b);
+void			rotate(t_linked_list **stack);
+void			rotate_a(t_linked_list **stack_a);
+void			rotate_b(t_linked_list **stack_b);
+void			rotate_ab(t_linked_list **stack_a, t_linked_list **stack_b);
 
 //Reverse rotate moves
-void	reverse_rotate(t_linked_list **stack);
-void	reverse_rotate_a(t_linked_list **stack_a);
-void	reverse_rotate_b(t_linked_list **stack_b);
-void	reverse_rotate_ab(t_linked_list **stack_a, t_linked_list **stack_b);
+void			r_rotate(t_linked_list **stack);
+void			r_rotate_a(t_linked_list **stack_a);
+void			r_rotate_b(t_linked_list **stack_b);
+void			r_rotate_ab(t_linked_list **stack_a, t_linked_list **stack_b);
 
 //Sortings
-void sort_3_numbers(t_linked_list **stack_a);
-void sort_4_numbers(t_stack *stacks);
+void			sort_3_numbers(t_linked_list **stack_a);
+void			sort_4_numbers(t_stack *stacks);
 
-int find_index(t_linked_list *stack, int value);
-void moves_stack_a(t_stack *stacks);
-int search_number(t_linked_list *stack, int value);
-void to_top_stack_a(t_stack *stacks, t_linked_list *stack_a, int i);
-void new_elem_in_b(t_stack *stacks);
-void max_min_in_b(t_stack *stacks);
-void cheapest(t_stack *stacks);
+int				find_index(t_linked_list *stack, int value);
+void			moves_stack_a(t_stack *stacks);
+int				search_number(t_linked_list *stack, int value);
+void			to_top_stack_a(t_stack *stacks, t_linked_list *stack_a, int i);
+void			new_elem_in_b(t_stack *stacks, t_linked_list *stack_a);
+void			max_min_in_b(t_stack *stacks);
+void			cheapest(t_stack *stacks);
 #endif

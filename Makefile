@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+         #
+#    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/14 16:59:28 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/02/02 12:19:22 by gabo             ###   ########.fr        #
+#    Updated: 2024/02/04 17:10:56 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC =	./src/push_swap.c \
 		./src/moves_b.c \
 		./src/cheap.c \
 		./src/sort_4_numbers.c \
+		./src/free_stacks.c \
 
 OBJ = $(SRC:.c=.o)
 

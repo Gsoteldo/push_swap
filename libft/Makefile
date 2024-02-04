@@ -6,11 +6,12 @@
 #    By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/25 19:34:12 by gsoteldo          #+#    #+#              #
-#    Updated: 2024/01/08 20:49:53 by gsoteldo         ###   ########.fr        #
+#    Updated: 2024/02/04 20:05:09 by gsoteldo         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = 	./atoi_itoa_functions/ft_atoi.c \
+		./atoi_itoa_functions/ft_atol.c \
 		./atoi_itoa_functions/ft_itoa.c \
 		./fd_functions/ft_putchar_fd.c \
 		./fd_functions/ft_putendl_fd.c \

@@ -3,38 +3,38 @@
 /*                                                        :::      ::::::::   */
 /*   check_input.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:54:30 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 13:27:59 by gabo             ###   ########.fr       */
+/*   Updated: 2024/02/04 20:08:56 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-static void is_max_int(char *str)
+static void	is_max_int(char *str)
 {
-	if (ft_atoi(str) > 2147483647 || ft_atoi(str) <= -2147483648)
-		free_stacks(NULL, 1);
+	if (ft_atol(str) > 2147483647 || ft_atol(str) < -2147483648)
+		free_stacks(NULL, 1, 1);
 	else
 	{
 		if (str[0] == '-')
 		{
 			if (ft_atoi(str) <= -2147483648)
-				free_stacks(NULL, 1);
+				free_stacks(NULL, 1, 1);
 		}
 		else
 		{
 			if (ft_atoi(str) > 2147483647)
-				free_stacks(NULL, 1);
+				free_stacks(NULL, 1, 1);
 		}
 	}
 }
 
-int is_repeated(int argc, char **argv)
+int	is_repeated(int argc, char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	if (argc == 2)
@@ -53,39 +53,48 @@ int is_repeated(int argc, char **argv)
 	return (0);
 }
 
-static void comprobation(char **argv, t_stack *stacks, int *i)
+void	comprobation(int argc, char **argv, t_stack *stacks)
 {
-	size_t j;
+	int		i;
+	size_t	j;
 
 	j = 0;
-	while (j < ft_strlen(argv[*i]))
+	i = 1;
+	if (argv[i][0] == '\0')
+		free_stacks(stacks, 1, 1);
+	while (i < argc)
 	{
-		if ((ft_isdigit(argv[*i][j]) == 0) && (argv[*i][j] != ' '))
+		while (j < ft_strlen(argv[i]))
 		{
-			
-			if (argv[*i][j] != '-')
-				free_stacks(stacks, 1);
+			if (!ft_isdigit(argv[i][j]))
+			{
+				if (j == 0 && (ft_strlen(argv[i]) != 1) && argv[i][j] == '-' && argv[i][j] == '+')
+				{
+					j++;
+					continue;
+				}
+				free_stacks(stacks, 1, 1);
+			}
+			j++;
 		}
-		else if (argv[*i][j] == ' ' && ft_isdigit(argv[*i][j + 1]) == ' ')
-			free_stacks(stacks, 1);
-		j++;
+		i++;
 	}
 }
 
 int	checker(int argc, char **argv, t_stack *stacks)
 {
-	int					i;
-	int					num;
+	int	i;
+	int	num;
+
 	i = 1;
 	num = 1;
 	if (argc < 2)
-		free_stacks(stacks, 0);
+		free_stacks(stacks, 0, 1);
 	while (i < argc)
 	{
 		is_max_int(argv[i]);
-		if (argv[i][ft_strlen(argv[i]) - 1] == ' ' || argv[i][0] == ' ')
-		comprobation(argv, stacks, &i);
-		if(is_repeated(argc, argv) == 1)
+		comprobation(argc, argv, stacks);
+		if (is_repeated(argc, argv) == 1)
 		{
 			num = 0;
 			break ;

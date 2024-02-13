@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/29 17:43:34 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 17:01:44 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/12 19:35:07 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,5 @@ void	sort_4_numbers(t_stack *stacks)
 	push_b(&stacks->list_a, &stacks->list_b);
 	sort_3_numbers(&stacks->list_a);
 	moves_stack_a(stacks);
-	free_stacks(stacks, 0);
-	exit(0);
+	free_stacks(stacks, 1, 0, 1);
 }

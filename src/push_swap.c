@@ -6,16 +6,16 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:33:54 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/04 20:00:45 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 20:48:53 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
 
-void ft_leaks(void)
-{
-	system("leaks push_swap");
-}
+// static void ft_leaks(void)
+// {
+// 	system("leaks push_swap");
+// }
 
 void	push_swap(t_stack *stacks, int size_stack)
 {
@@ -44,6 +44,8 @@ int	main(int argc, char *argv[])
 	int		size;
 
 	//atexit(ft_leaks);
+	if (argv[1][0] == '\0')
+		free_stacks(NULL, 0, 1, 1);
 	stacks = (t_stack *)malloc(sizeof(t_stack));
 	if (checker(argc, argv, stacks) == 0)
 	{
@@ -54,6 +56,6 @@ int	main(int argc, char *argv[])
 	stacks->list_b = NULL;
 	size = stack_size(stacks->list_a);
 	push_swap(stacks, size);
-	free_stacks(stacks, 0, 0);
+	free_stacks(stacks, 1, 0, 0);
 	return (0);
 }

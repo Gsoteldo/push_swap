@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 17:08:32 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/04 20:00:13 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:42:15 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,18 @@ void free_linked_list(t_linked_list *list)
 	}
 }
 
-void	free_stacks(t_stack *stacks, int flag, int exit_flag)
+void	free_stacks(t_stack *stacks, int stack_flag, int error_flag, int exit_flag)
 {	
-	free_linked_list(stacks->list_a);
-	free_linked_list(stacks->list_b);
-	free(stacks->moves);
-	free(stacks->cheapest);
-	free(stacks->value);
+	if (stack_flag == 1)
+	{
+		free_linked_list(stacks->list_a);
+		free_linked_list(stacks->list_b);
+		free(stacks->moves);
+		free(stacks->cheapest);
+		free(stacks->value);
+	}
 	free(stacks);
-	if (flag == 1)
+	if (error_flag == 1)
 		ft_putstr_fd("Error\n", 2);
 	if (exit_flag == 1)
 		exit(0);

@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/02 17:28:01 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/03 16:30:43 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:27:39 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ void	double_moves_checker(t_stack *stacks)
 {
 	stacks->moves->rr = 0;
 	stacks->moves->rrr = 0;
-	while (stacks->moves->ra > 0 && stacks->moves->rb > 0)
+	while (stacks->moves->ra != 0 && stacks->moves->rb != 0)
 	{
 		stacks->moves->ra--;
 		stacks->moves->rb--;
 		stacks->moves->rr++;
 	}
-	while (stacks->moves->rra > 0 && stacks->moves->rrb > 0)
+	while (stacks->moves->rra != 0 && stacks->moves->rrb != 0)
 	{
 		stacks->moves->rra--;
 		stacks->moves->rrb--;
@@ -75,10 +75,12 @@ void	move_checker(t_stack *stacks)
 {
 	t_linked_list	*aux;
 	int				i;
+	int size;
 
 	aux = stacks->list_a;
 	i = 0;
-	while (i++ < stack_size(stacks->list_a))
+	size = stack_size(stacks->list_a);
+	while (i++ < size)
 	{
 		to_top_stack_a(stacks, aux, i - 1);
 		if (aux->content > stacks->value->max_b
@@ -94,12 +96,15 @@ void	move_checker(t_stack *stacks)
 
 void	cheapest(t_stack *stacks)
 {
+	int size;
+
+	size = stack_size(stacks->list_a);
 	stacks->moves = (t_moves *)malloc(sizeof(t_moves));
 	stacks->cheapest = (t_moves *)malloc(sizeof(t_moves));
 	stacks->value = (t_value *)malloc(sizeof(t_value));
-	while (stack_size(stacks->list_a) > 3)
+	while (size-- > 3)
 	{
-		is_max_min(stacks, 1);
+		is_max_min(stacks, 0, 1);
 		move_checker(stacks);
 		move_cheapest(stacks);
 	}

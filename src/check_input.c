@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 15:54:30 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/04 20:08:56 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:42:53 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,7 @@
 static void	is_max_int(char *str)
 {
 	if (ft_atol(str) > 2147483647 || ft_atol(str) < -2147483648)
-		free_stacks(NULL, 1, 1);
-	else
-	{
-		if (str[0] == '-')
-		{
-			if (ft_atoi(str) <= -2147483648)
-				free_stacks(NULL, 1, 1);
-		}
-		else
-		{
-			if (ft_atoi(str) > 2147483647)
-				free_stacks(NULL, 1, 1);
-		}
-	}
+		free_stacks(NULL, 0, 1, 1);
 }
 
 int	is_repeated(int argc, char **argv)
@@ -61,19 +48,19 @@ void	comprobation(int argc, char **argv, t_stack *stacks)
 	j = 0;
 	i = 1;
 	if (argv[i][0] == '\0')
-		free_stacks(stacks, 1, 1);
+		free_stacks(stacks, 1, 0, 1);
 	while (i < argc)
 	{
 		while (j < ft_strlen(argv[i]))
 		{
 			if (!ft_isdigit(argv[i][j]))
 			{
-				if (j == 0 && (ft_strlen(argv[i]) != 1) && argv[i][j] == '-' && argv[i][j] == '+')
+				if (j == 0 && ft_strlen(argv[i]) != 1 && (argv[i][j] == '-' || argv[i][j] == '+'))
 				{
 					j++;
 					continue;
 				}
-				free_stacks(stacks, 1, 1);
+				free_stacks(stacks, 1, 1, 1);
 			}
 			j++;
 		}
@@ -89,7 +76,7 @@ int	checker(int argc, char **argv, t_stack *stacks)
 	i = 1;
 	num = 1;
 	if (argc < 2)
-		free_stacks(stacks, 0, 1);
+		free_stacks(stacks, 1, 1, 1);
 	while (i < argc)
 	{
 		is_max_int(argv[i]);
@@ -97,6 +84,7 @@ int	checker(int argc, char **argv, t_stack *stacks)
 		if (is_repeated(argc, argv) == 1)
 		{
 			num = 0;
+			free_stacks(stacks, 0, 1, 1);
 			break ;
 		}
 		i++;

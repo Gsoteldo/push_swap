@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/28 17:25:28 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/02 17:19:15 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:26:33 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,11 +81,14 @@ static void	is_min_b(t_stack *stacks, t_linked_list *stack_b)
 	}
 }
 
-void	is_max_min(t_stack *stacks, int flag)
+void	is_max_min(t_stack *stacks, int flag_a, int flag_b)
 {
+	if (flag_a ==1)
+	{
 	is_max_a(stacks, stacks->list_a);
 	is_min_a(stacks, stacks->list_a);
-	if (flag == 1)
+	}
+	if (flag_b == 1)
 	{
 		is_max_b(stacks, stacks->list_b);
 		is_min_b(stacks, stacks->list_b);

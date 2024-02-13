@@ -6,7 +6,7 @@
 /*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 19:40:43 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/04 20:00:34 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/13 19:28:28 by gsoteldo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,12 +64,10 @@ t_linked_list	*ft_new_a_node(int content);
 t_linked_list	*ft_new_a_list(int argc, char **argv);
 void			show_stack(t_linked_list *stack);
 int				stack_size(t_linked_list *lst);
-void			free_stacks(t_stack *stacks, int flag, int exit_flag);
+void			free_stacks(t_stack *stacks, int stack_flag, int error_flag, int exit_flag);
 int				is_repeated(int argc, char **argv);
-void			is_max_min(t_stack *stacks, int flag);
+void			is_max_min(t_stack *stacks, int flag_a, int flag_b);
 t_linked_list	*ft_last(t_linked_list *stack);
-void			clear_stacks(t_linked_list *lst, void (*del)(void *));
-void			delete_node(t_linked_list *lst, void (*del)(void *));
 
 //Push moves
 void			push(t_linked_list **source, t_linked_list **destiny);

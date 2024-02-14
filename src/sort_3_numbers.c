@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sort_3_numbers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gsoteldo <gsoteldo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gabo <gabo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/13 21:51:23 by gsoteldo          #+#    #+#             */
-/*   Updated: 2024/02/13 19:11:02 by gsoteldo         ###   ########.fr       */
+/*   Updated: 2024/02/02 22:50:16 by gabo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void	swap_and_rotate(t_linked_list **stack_a)
 static void	swap_and_reverse_rotate(t_linked_list **stack_a)
 {
 	swap_a(stack_a);
-	r_rotate_a(stack_a);
+	reverse_rotate_a(stack_a);
 }
 
 void	sort_3_numbers(t_linked_list **stack_a)
@@ -47,5 +47,6 @@ void	sort_3_numbers(t_linked_list **stack_a)
 		swap_and_rotate(stack_a);
 	else if ((first_elem < second_elem) && (second_elem > third_elem)
 		&& (first_elem > third_elem))
-		r_rotate_a(stack_a);
+		reverse_rotate_a(stack_a);
+	
 }
